@@ -1,2 +1,2 @@
-# DanielDavalos93.github.io
+# Daniel Dávalos
 Personal website
