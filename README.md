@@ -1,8 +1,7 @@
 # Daniel Dávalos
-Personal website
+## Personal site
 > Esto es un quote
-```
-lean
+```lean
 theorem 1 : 1 = 1 := by
   rfl
 ```
