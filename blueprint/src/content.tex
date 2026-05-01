@@ -1,0 +1,39 @@
+% In this file you should put the actual content of the blueprint.
+% It will be used both by the web and the print version.
+% It should *not* include the \begin{document}
+%
+% If you want to split the blueprint content into several files then
+% the current file can be a simple sequence of \input. Otherwise It
+% can start with a \section or \chapter for instance.
+
+\chapter{Nets}
+
+\begin{definition}[Net and Marked Net]\label{def:net}
+  \lean{net}
+  \leanok
+  \uses{def:net}
+  A \emph{net} $N$ is a tuple $N = (\alpha, \beta, \preS{\_}, \postS{\_})$,
+  where $\alpha$ is a nonempty set of places, $\beta$ is the set of
+  transitions, and
+  $\preS{\_}, \postS{\_}: \beta\rightarrow \nat^{\alpha}$ assign source and
+  target to each transition. We consider only nets in which every transition
+  both consumes and produces, i.e., $\preS{\tr{t}} \neq\emptyset$ and
+  $\postS{\tr{t}} \neq\emptyset$ for all $\tr{t}\in \beta$.
+  %
+  A \emph{marking} $m$ of a net $N$ is a multiset of places, i.e.,
+  $m\in\nat^{\alpha}$.
+  %
+  A \emph{marked net} is a pair $(N, m_0)$ where $N$ is a net and $m_0$ is
+  a marking of $N$.
+\end{definition}
+
+The pre- and postsets of a place $p$ are $\preS{p} = \{t \mid p \in \postS{t}\}$ and $\postS{p} = \{t \mid p \in \preS{t}\}$.
+
+\subsection{Operational semantics}
+
+\begin{definition}[Enabled transition]\label{def:enabled}
+  Let $N$ be a net. A transition $\tr{t}$ is \emph{enabled} at a marking $m$,
+  denoted $m\llbracket \tr{t}\rrbracket_{\llBra N \rrBra}$, if $\preS{\tr{t}}\le m$.
+\end{definition}
+
+A transition is \emph{enabled} if the  marking contains its preset, i.e, as many tokens as those required by the transition's preset.
