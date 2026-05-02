@@ -1,0 +1,113 @@
+name: Compile blueprint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - '**/blueprint.yml'
+      - 'blueprint/**'
+      - 'home_page/**'
+     - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.lean'
+      - '**/blueprint-paper.yml'
+      - 'blueprint/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+  workflow_dispatch: # Allow manual triggering of the workflow from the GitHub Actions interface
+
+# Cancel previous runs if a new commit is pushed to the same PR or branch
+concurrency:
+  group: ${{ github.ref }}  # Group runs by the ref (branch or PR)
+  cancel-in-progress: true  # Cancel any ongoing runs in the same group
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages and modify PR labels
+permissions:
+  contents: read          # Read access to repository contents
+  pages: write            # Write access to GitHub Pages
+  id-token: write         # Write access to ID tokens
+  issues: write           # Write access to issues
+  pull-requests: write    # Write access to pull requests
+
+jobs:
+  build_project:
+    runs-on: ubuntu-latest
+    name: Build project
+    steps:
+      - name: Cleanup to free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: false
+          haskell: false
+          large-packages: false
+          docker-images: false
+          swap-storage: false
+
+      - name: Add 'awaiting-CI' label
+        if: >
+          github.event_name == 'pull_request'
+        run: |
+          curl --request POST \
+            --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels \
+            --header 'authorization: Bearer ${{ secrets.PAT_TOKEN }}' \
+            --header 'Content-Type: application/json' \
+            --data '["awaiting-CI"]'
+
+      - name: Checkout project
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Install elan
+        run: curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+
+      - name: Get Mathlib cache
+        run: ~/.elan/bin/lake exe cache get || true
+
+      - name: Cache build artifacts and Mathlib API docs
+        uses: actions/cache@v5
+        with:
+          path: |
+            .lake/build
+            !.lake/build/doc-data
+            !.lake/build/doc/declarations/declaration-data-equational_theories*
+          key: LakeBuild-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+          #restore-keys: LakeBuild-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}
+
+      - name: Build project
+        run: ~/.elan/bin/lake build reversible-occ-nets
+
+      - name: Check environment with lean4checker
+        run: |
+          : Check Environment with lean4checker
+          chmod +x ./scripts/lean4_checker/run_lean4checker.sh
+          ./scripts/lean4_checker/run_lean4checker.sh
+        shell: bash
+
+      #- name: Check with lean4lean
+      #  run: |
+      #      python scripts/lean4lean_checker/main.py
+
+      - name: Remove 'awaiting-CI' label
+        if: >
+          always() &&
+          github.event_name == 'pull_request'
+        run: |
+          curl --request DELETE \
+            --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels/awaiting-CI \
+            --header 'authorization: Bearer ${{ secrets.PAT_TOKEN }}' \
+            --header 'Content-Type: application/json'
