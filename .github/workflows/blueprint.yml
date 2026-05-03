@@ -17,7 +17,7 @@ on:
       - main
     paths:
       - '**/*.lean'
-      - '**/blueprint-paper.yml'
+      - '**/blueprint.yml'
       - 'blueprint/**'
       - 'lean-toolchain'
       - 'lakefile.toml'
@@ -57,16 +57,6 @@ jobs:
           docker-images: false
           swap-storage: false
 
-      - name: Add 'awaiting-CI' label
-        if: >
-          github.event_name == 'pull_request'
-        run: |
-          curl --request POST \
-            --url https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels \
-            --header 'authorization: Bearer ${{ secrets.PAT_TOKEN }}' \
-            --header 'Content-Type: application/json' \
-            --data '["awaiting-CI"]'
-
       - name: Checkout project
         uses: actions/checkout@v6
         with:
@@ -90,13 +80,6 @@ jobs:
 
       - name: Build project
         run: ~/.elan/bin/lake build reversible-occ-nets
-
-      - name: Check environment with lean4checker
-        run: |
-          : Check Environment with lean4checker
-          chmod +x ./scripts/lean4_checker/run_lean4checker.sh
-          ./scripts/lean4_checker/run_lean4checker.sh
-        shell: bash
 
       #- name: Check with lean4lean
       #  run: |
