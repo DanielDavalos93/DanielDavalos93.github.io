@@ -14,10 +14,10 @@
      [["petri_net/PetriNet:extraDep",
        [["@petri_net:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["PetriNet.Nets transitive imports (legacy)", "107b6aec62047784"],
+       [["PetriNet.Nets transitive imports (legacy)", "d785a87ed51767a6"],
         ["PetriNet.Nets:importAllArts", "a05439e1b6ddde13"],
         ["PetriNet.MultisetAux transitive imports (legacy)",
-         "7f8d83c942ebca50"],
+         "09246b7f9297aa96"],
         ["PetriNet.MultisetAux:importAllArts", "1fe4c8ff56524013"],
         ["Mathlib.Data.Set.Disjoint transitive imports (legacy)",
          "37dc40ad26d79dc5"],
@@ -26,7 +26,7 @@
          "6669ae1f31ea5743"],
         ["Mathlib.Logic.Relation:importAllArts", "063aa750f5dce883"],
         ["Mathlib.Data.Multiset.Basic transitive imports (legacy)",
-         "adec9a7c00b2db0d"],
+         "887b39341303894e"],
         ["Mathlib.Data.Multiset.Basic:importAllArts", "70c955b05ef20529"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -42,4 +42,4 @@
   ["Module.name: PetriNet.Occurrence", "1c01a297641dd739"],
   ["Package.id?: (some petri_net)", "d70365ead0eb84c7"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "a30bc54c97e236a5"}
+ "depHash": "7d2ab165cd6b86e1"}

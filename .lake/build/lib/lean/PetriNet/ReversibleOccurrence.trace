@@ -14,7 +14,7 @@
      [["petri_net/PetriNet:extraDep",
        [["@petri_net:extraDep", "00000000000006bb"]]],
       ["imports",
-       [["PetriNet.Occurrence transitive imports (legacy)", "fab5a64b591ca8f8"],
+       [["PetriNet.Occurrence transitive imports (legacy)", "f0f9514ee79eaca4"],
         ["PetriNet.Occurrence:importAllArts", "de7336195115c616"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -30,4 +30,4 @@
   ["Module.name: PetriNet.ReversibleOccurrence", "f44b6482fee57738"],
   ["Package.id?: (some petri_net)", "d70365ead0eb84c7"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "54b0f8dad53b56b5"}
+ "depHash": "9fb2f9ac53d2a95d"}

@@ -23,13 +23,13 @@
         ["Mathlib.Data.Rel transitive imports (legacy)", "cb97e0f54a446a72"],
         ["Mathlib.Data.Rel:importAllArts", "6f64203ad667ad81"],
         ["Mathlib.Data.Finset.Basic transitive imports (legacy)",
-         "9d291d8cc1faea19"],
+         "f45156902b3bef6c"],
         ["Mathlib.Data.Finset.Basic:importAllArts", "19dc6347cf1c7240"],
         ["Mathlib.Data.Multiset.Basic transitive imports (legacy)",
-         "adec9a7c00b2db0d"],
+         "887b39341303894e"],
         ["Mathlib.Data.Multiset.Basic:importAllArts", "70c955b05ef20529"],
         ["PetriNet.MultisetAux transitive imports (legacy)",
-         "7f8d83c942ebca50"],
+         "09246b7f9297aa96"],
         ["PetriNet.MultisetAux:importAllArts", "1fe4c8ff56524013"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
@@ -45,4 +45,4 @@
   ["Module.name: PetriNet.Nets", "974d94979bc2ab5d"],
   ["Package.id?: (some petri_net)", "d70365ead0eb84c7"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "c45de7561dcdf9f1"}
+ "depHash": "8d7bea2fdd4ea7e6"}
