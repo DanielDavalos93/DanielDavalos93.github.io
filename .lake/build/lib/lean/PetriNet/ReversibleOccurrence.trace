@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["6df464a25bfc318e.olean"],
+  "i": "112ac2bbf324b43d.ilean",
+  "c": "c81420b2a01a8fce.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/home/daniel/DanielDavalos93.github.io/.lake/packages/MD4Lean/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/BibtexQuery/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/UnicodeBasic/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/leansqlite/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/Cli/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/batteries/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/Qq/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/aesop/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/importGraph/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/plausible/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/checkdecls/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/doc-gen4/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/packages/mathlib/.lake/build/lib/lean:/home/daniel/DanielDavalos93.github.io/.lake/build/lib/lean /home/daniel/.elan/toolchains/leanprover--lean4---v4.29.1/bin/lean /home/daniel/DanielDavalos93.github.io/PetriNet/ReversibleOccurrence.lean -o /home/daniel/DanielDavalos93.github.io/.lake/build/lib/lean/PetriNet/ReversibleOccurrence.olean -i /home/daniel/DanielDavalos93.github.io/.lake/build/lib/lean/PetriNet/ReversibleOccurrence.ilean -c /home/daniel/DanielDavalos93.github.io/.lake/build/ir/PetriNet/ReversibleOccurrence.c --setup /home/daniel/DanielDavalos93.github.io/.lake/build/ir/PetriNet/ReversibleOccurrence.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["PetriNet.ReversibleOccurrence:deps",
+   [["deps",
+     [["petri_net/PetriNet:extraDep",
+       [["@petri_net:extraDep", "00000000000006bb"]]],
+      ["imports",
+       [["PetriNet.Occurrence transitive imports (legacy)", "fab5a64b591ca8f8"],
+        ["PetriNet.Occurrence:importAllArts", "de7336195115c616"]]]]],
+    ["libs",
+     [["import dynlibs", "00000000000006bb"],
+      ["package external libraries", "00000000000006bb"],
+      ["module dynlibs", "00000000000006bb"],
+      ["module plugins", "00000000000006bb"]]]]],
+  ["Lean 4.29.1, commit f72c35b3f637c8c6571d353742168ab66cc22c00",
+   "fa77a35a41db35c0"],
+  ["/home/daniel/DanielDavalos93.github.io/PetriNet/ReversibleOccurrence.lean",
+   "2f89c5fe6e8be382"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PetriNet.ReversibleOccurrence", "f44b6482fee57738"],
+  ["Package.id?: (some petri_net)", "d70365ead0eb84c7"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "54b0f8dad53b56b5"}

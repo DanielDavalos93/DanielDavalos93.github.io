@@ -1,0 +1,23 @@
+name = "petri_net"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["PetriNet"]
+
+
+[[require]]
+name = "checkdecls"
+git = "https://github.com/PatrickMassot/checkdecls.git"
+
+[[require]]
+name = "«doc-gen4»"
+git = "https://github.com/leanprover/doc-gen4"
+rev = "v4.29.1"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.29.1"
+
+[[lean_lib]]
+name = "PetriNet"
+

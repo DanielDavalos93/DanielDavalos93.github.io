@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1778026001.36056 "print.tex" "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.pdf" "print" 1778026003.41404 0
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.aux" 1778026003.14003 2644 309a14a3811d533b5e90151026985d76 "pdflatex"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.out" 1778026003.14337 1344 e2556dc53e675991fb27f50399774dec "pdflatex"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.toc" 1778026003.14337 645 d87c007a90aabdb66f85c881c68d0ce2 "pdflatex"
+["pdflatex"] 1778027363.5833 "print.tex" "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.pdf" "print" 1778027365.59236 0
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.aux" 1778027365.32385 2644 309a14a3811d533b5e90151026985d76 "pdflatex"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.out" 1778027365.32385 1344 e2556dc53e675991fb27f50399774dec "pdflatex"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.toc" 1778027365.32385 645 d87c007a90aabdb66f85c881c68d0ce2 "pdflatex"
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
@@ -92,9 +92,9 @@
   "macros/print.tex" 1778010433.88406 1101 87627b2ec24fef68edc71c13f43f7bab ""
   "print.tex" 1778025989.84859 1280 decc5ec0dce860c689e25a2a3555e166 ""
   (generated)
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.aux"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.log"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.out"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.pdf"
-  "/home/daniel/Documentos/Doctorado/Formalización/reversible-occ-nets/blueprint/print/print.toc"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.aux"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.log"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.out"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.pdf"
+  "/home/daniel/DanielDavalos93.github.io/blueprint/print/print.toc"
   (rewritten before read)
