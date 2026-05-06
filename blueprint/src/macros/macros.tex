@@ -1,0 +1,304 @@
+\newcommand\llbBra{\bullet\{\!\!\{ }
+\newcommand\llBra{\{\!\!\{}
+\newcommand\rrBra{\}\!\!\}}
+
+%\newcommand{\reach}[1]{\mathcal{R}(#1)}
+\newcommand{\reach}[1]{{\it reach}(#1)}
+\newcommand{\ceq}{\asymp}
+\newcommand{\rt}{\leftharpoondown\rightharpoonup}
+\newcommand{\source}{\mathtt{source}}
+\newcommand{\target}{\mathtt{target}}
+\newcommand{\ft}{\mathtt{t}}
+\newcommand{\reverse}[1]{\leftharpoondown{#1}}
+\newcommand{\len}[1]{|#1|}
+\newcommand{\fw}[1]{\triangleright{#1}}
+\newcommand{\bw}[1]{\triangleleft{#1}}
+\newcommand{\afw}{\triangleright\!\triangleright}
+\newcommand{\abw}{\triangleleft\!\triangleleft}
+
+\newcommand{\m}{Mazurkiewicz }
+
+%
+% FIGURE SEPARATOR
+%
+%\newcommand{\topfigrule}{\vskip3pt\noindent\rule{\textwidth}{1pt}\vskip-15pt}
+
+%
+% MACRO FOR COMMENTS
+%
+\newcommand{\nota}[1]{\noindent \fbox{ \parbox{\textwidth}{#1} }  }
+
+%
+% ABBREVIATIONS AND SYMBOLS
+%
+
+%\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\wrt}{w.r.t.}
+
+%
+% MULTISETS
+%
+\newcommand{\supp}{\mathit{supp}}
+
+%
+% NETS
+%
+\newcommand{\minp}[1]{\ensuremath{{}^\circ{#1}}}
+\newcommand{\maxp}[1]{\ensuremath{#1^\circ}}
+
+\newcommand{\preS}[1]{\ensuremath{{}^\bullet{#1}}}
+\newcommand{\postS}[1]{\ensuremath{#1^\bullet}}
+
+\newcommand{\unf}{\mathcal{U}}
+\newcommand{\places}{\alpha}
+\newcommand{\p}[1]{{\sf #1}}
+
+\newcommand{\transitions}{\beta}
+\newcommand{\tr}[1]{{\sf #1}}
+
+\newcommand{\nat}{\mathbb{N}}
+%\newcommand{\nat}{\bbbn}
+
+\newcommand{\en}[1]{\textsf{en}(#1)}
+\newcommand{\co}[2]{#1 \; co \; #2}
+
+\newcommand{\multiset}[1]{#1}
+
+%
+% REDUCTIONS
+%
+%\newcommand{\red}{\rightarrow}
+% \newcommandx{\red}[1]{\xrightarrow{#1}}
+%\newcommand{\fred}{\mapsto}
+% \makeatletter
+% \newcommand{\xMapsto}[2][]{\ext@arrow 0599{\Mapstofill@}{#1}{#2}}
+% \def\Mapstofill@{\arrowfill@{\Mapstochar\Relbar}\Relbar\Rightarrow}
+% \makeatother
+%
+%\newcommandx{\fred}[1][1=\tr t]{\xmapsto{#1}}
+
+% \newcommandx{\fred}[1]{\stackrel{#1}{\twoheadrightarrow}}
+%
+% \newcommandx{\bred}[1]{\stackrel{#1}{\rightsquigarrow}}
+% \newcommand{\rred}{\Rightarrow}
+% \newcommand{\jeq}{\; \mathop{\triangleright} \;}
+%
+\newcommand{\pntrans}{\llbracket\rangle}
+\newcommand{\exec}[1]{\llbracket#1\rangle}
+%
+% INFERENCE RULES
+%
+% \def \mathrule #1#2#3{\begin{array}{l}%
+%     {\mbox{\scriptsize ({\sc #1})} }%
+%     \\ \irule{#2}{#3}%
+% \end{array}}
+% \newcommand{\irule}[2]{\frac{\textstyle\rule[-1.3ex]{0cm}{3ex}#1}%
+% {\textstyle\rule[-.5ex]{0cm}{3ex}#2}}
+% \newcommand{\arule}[3]{\frac{\textstyle\rule[-.8ex]{0cm}{3ex}#1}%
+% {\textstyle\rule[.2ex]{0cm}{3ex}#2}{\mbox{\scriptsize {\sc #3}}}}
+%
+% %
+% % COLOUR-NETS
+% %
+%
+% \newcommand{\subsc}{\star}
+%
+% \makeatletter
+% \newsavebox{\@brx}
+% \newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+%   \mathopen{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+% \newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+%   \mathclose{\copy\@brx\mkern2mu\kern-0.9\wd\@brx\usebox{\@brx}}}
+% \makeatother
+%
+\newcommand{\enabled}[1]{\llbracket #1\rrbracket}
+\newcommand{\fir}[1]{\llbracket #1 \rangle}
+\newcommand{\fs}[1]{\llbracket #1 \rrangle}
+\newcommand{\TT}{\mathsf{TransitionType}}
+\newcommand{\fwd}{\mathsf{fwd}}
+\newcommand{\bwd}{\mathsf{bwd}}
+\newcommand{\Pl}{\mathsf{Pl}}
+\newcommand{\Tr}{\mathsf{Tr}}
+%
+% REVERSIBLE
+%
+
+% \makeatletter
+% \DeclareRobustCommand{\cev}[1]{%
+%   \mathpalette\do@cev{#1}%
+% }
+% \newcommand{\do@cev}[2]{%
+%   \fix@cev{#1}{+}%
+%   \reflectbox{$\m@th#1\overrightarrow{\reflectbox{$\fix@cev{#1}{-}\m@th#1#2\fix@cev{#1}{+}$}}$}%
+%   \fix@cev{#1}{-}%
+% }
+% \newcommand{\fix@cev}[2]{%
+%   \ifx#1\displaystyle
+%     \mkern#23mu
+%   \else
+%     \ifx#1\textstyle
+%       \mkern#23mu
+%     \else
+%       \ifx#1\scriptstyle
+%         \mkern#22mu
+%       \else
+%         \mkern#22mu
+%       \fi
+%     \fi
+%   \fi
+% }
+%
+% \makeatother
+%
+% \newcommand{\leadstoop}[1]{\stackrel{\reflectbox{\footnotesize$\leadsto$}}{#1}}
+%
+% %\newcommand{\rev}[1]{\cev{#1}}
+%
+\newcommand{\rev}[1]{\leadstoop{#1}}
+
+
+%%%%Drawing %%%%
+
+% \definecolor{mygray}{RGB}{120,120,120}
+
+% \newcommand{\drawplace}{*[o]=<1.2pc,1.2pc>{\ }\drop\cir{}}
+% \newcommand{\drawmarkedplace}{*[o]=<1.2pc,1.2pc>{\bullet}\drop\cir{}}
+% \newcommand{\drawcolouredmarkedplace}[1]{*[o]=<1.2pc,1.2pc>{#1}\drop\cir{}}
+%
+% \newcommand{\nameplaceup}[1]{\POS[]+<0pc,1pc>\drop{{#1}}}
+% \newcommand{\nameplacedown}[1]{\POS[]-<0pc,1pc>\drop{{#1}}}
+% \newcommand{\nameplaceright}[1]{\POS[]+<1pc,0pc>\drop{{#1}}}
+% \newcommand{\nameplaceleft}[1]{\POS[]-<1pc,0pc>\drop{{#1}}}
+%
+%
+% \newcommand{\drawtrans}[1]{*=<2pc,1.3pc>{{#1}}\drop\frm{-}}
+% \newcommand{\drawtransr}[1]{*=<2pc,1pc>[F:mygray]{#1}}
+%
+%
+% %%% 1-inf-safe
+% \newcommand{\OneInfSafe}{$1$-$\infty$-safe\xspace}
+% \newcommand{\OneInfMarking}{$1$-$\infty$ marking\xspace}
+%
+% %%% coloured nets
+% \newcommand{\colourset}{\mathcal{C}}
+% \newcommand{\historyset}{\mathcal{H}}
+% \newcommand{\varset}{\mathcal{X}}
+% \newcommand{\vars}[1]{{\it vars}(#1)}
+%
+
+%--------------------------------------------------------------
+%General Environments
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+
+%\newenvironment{proof}{\par \smallskip{\bf Proof:}}{\hfill\stopproof}
+%\def\stopproof{\square}
+% \def\square{\vbox{\hrule height.2pt\hbox{\vrule width.2pt height5pt \kern5pt
+% \vrule width.2pt} \hrule height.2pt}}
+%
+%
+% \newcommand{\tw}{\mathrm{tw}}
+%
+% %--------------------------------------------------------------
+% %--------------------------------------------------------------
+% %Figures and such
+% %--------------------------------------------------------------
+% %--------------------------------------------------------------
+% \newcommand{\scale}[2]{\scalebox{#1}{#2}}
+%
+% \newcommand{\fig}[1]{
+% \begin{figure}[h]
+% \rotatebox{0}{\includegraphics{#1}}
+% \end{figure}}
+%
+% \newcommand{\figcap}[2]
+% {
+% \begin{figure}[h]
+% \rotatebox{270}{\includegraphics{#1}} \caption{#2}
+% \end{figure}
+% }
+%
+% \newcommand{\scalefig}[2]{
+% \begin{figure}[h]
+% \scalebox{#1}{\includegraphics{#2}}
+% \end{figure}}
+%
+% \newcommand{\scalefigcap}[3]{
+% \begin{figure}[h]
+% \scalebox{#1}{\rotatebox{0}{\includegraphics{#2}}} \caption{#3}
+% \end{figure}}
+%
+% \newcommand{\scalefigcaplabel}[4]{
+% \begin{figure}[h]
+%  \scalebox{#1}{\includegraphics{#2}}\caption{#3\label{#4}}
+% \end{figure}}
+%
+%-----------------------------------------------------
+%Programs
+%-----------------------------------------------------
+%\newenvironment{prog}[1]{
+%\begin{minipage}{5.8 in}
+%\begin{center}
+%{\sc #1}
+%\end{center}
+%\begin{itemize}}
+%{
+%\end{itemize}
+%\end{minipage}}
+
+\newcommand{\program}[2]{\fbox{\vspace{2mm}\begin{prog}{#1} #2 \end{prog}\vspace{2mm}}}
+%-----------------------------------------------------------
+
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+%Other - Math
+%--------------------------------------------------------------
+%--------------------------------------------------------------
+\renewcommand{\phi}{\varphi}
+\newcommand{\eps}{\epsilon}
+\newcommand{\Sum}[1]{\underset{#1}{\Sigma}}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+
+
+
+
+%First parameter: index from which counting starts is optional, default is 1; second parameter is the %letter before the property indices
+%Example: \begin{properties}{C} or \begin{properties}[5]{C} will start with C6
+\newenvironment{properties}[2][0]
+{\renewcommand{\theenumi}{#2\arabic{enumi}}
+\begin{enumerate} \setcounter{enumi}{#1}}{\end{enumerate}\renewcommand{\theenumi}{\arabic{enumi}}}
+
+
+\setlength{\parskip}{2mm} \setlength{\parindent}{0mm}
+%------------------------------------------------------------
+%Making subfigures
+%------------------------------------------------------------
+
+%\begin{figure}[h]
+%\centering
+%\subfigure[caption subfigure 1]{\scalebox{0.2}{\includegraphics{file1..pdf}}\label{fig: label1}}
+%\hspace{1cm}
+%\subfigure[caption subfigure 2]{
+%\scalebox{0.2}{\includegraphics{file2.pdf}}\label{fig: label2}}
+%\hspace{1cm}
+%\subfigure[caption subfigure 3]{\scalebox{0.2}{\includegraphics{file3.pdf}}\label{fig: label3}}
+%\caption{caption for the whole figure\label{fig: whole figure}}
+%\end{figure}
+
+
+%------------------------------------------------------------
+%Regular figures
+%------------------------------------------------------------
+
+%\begin{figure}[h]
+% \scalebox{0.3}{\includegraphics{file.pdf}}\caption{CAPTION \label{fig: label}}
+%\end{figure}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Occurrence nets</title>
+<link rel="next" href="chap-reversible.html" title="Reversible occurrence nets" />
+<link rel="prev" href="sect0002.html" title="Nets" />
+<link rel="up" href="index.html" title="Reversible Occurrence Nets" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Reversible Occurrence Nets</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref"></span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">Nets</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000005"><span class="toc_ref">1.1</span> <span class="toc_entry">Net and Marked net definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000006"><span class="toc_ref">1.2</span> <span class="toc_entry">Firing and firing sequences</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="sect0003.html"><span class="toc_ref">2</span> <span class="toc_entry">Occurrence nets</span></a>
+ </li>
+<li class="">
+  <a href="chap-reversible.html"><span class="toc_ref">3</span> <span class="toc_entry">Reversible occurrence nets</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="chap-reversible.html#a0000000007"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions of reversible nets</span></a>
+ </li>
+<li class="">
+  <a href="chap-reversible.html#a0000000008"><span class="toc_ref">3.2</span> <span class="toc_entry">Properties of reversible occurrence nets</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-parabolic.html"><span class="toc_ref">4</span> <span class="toc_entry">Parabolic</span></a>
+ </li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000004">2 Occurrence nets</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:immediate_dependency">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">6</span>
+    <span class="definition_thmtitle">Causal Dependency</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  immediate, causal Let \(N\) be a net. The <em>immediate dependency relation</em> \({\lt}_{\{ \! \! \{ N \} \! \! \} }\subseteq {(\alpha \cup \beta )\times (\alpha \cup \beta )}\) is defined by </p>
+<div class="equation" id="<plasTeX.TeXFragment object at 0x7f44b9835010>">
+<p>
+  <div class="equation_content">
+    \begin{equation} \label{eq:immediate_dependency} {\lt}_{\{ \! \! \{ N \} \! \! \} } \;  := \;  \{  (x,y) \mid (y\in \beta \wedge x\in {}^\bullet {y}) \vee (x\in \beta \wedge y \in x^\bullet )\}  \end{equation}
+  </div>
+  <span class="equation_label">1</span>
+</p>
+</div>
+<p> We denote the transitive closure of \({\lt}_{\{ \! \! \{ N \} \! \! \} }\) as the <em>causal relation</em> \(\prec _{\{ \! \! \{ N \} \! \! \} }\), and its reflexive-transitive closure as the <em>causal preorder</em> \(\preceq _{\{ \! \! \{ N \} \! \! \} }\). A net is <em>acyclic</em> if its causal relation is irreflexive, i.e., there is no \(x \in \alpha \cup \beta \) such that \(x \prec _{\{ \! \! \{ N \} \! \! \} } x\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:conflict">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">7</span>
+    <span class="definition_thmtitle">Conflict</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  immediate_conflict, Conflict.conflict Two distinct transitions \(t_1, t_2\) are in <em>immediate conflict</em> if they share a common pre-place, i.e., \({}^\bullet {t_1} \cap {}^\bullet {t_2} \neq \emptyset \), denoted by \(t_1 \# _{0\{ \! \! \{ N \} \! \! \} } t_2\). The <em>conflict relation</em> \(\# _{\{ \! \! \{ N \} \! \! \} }\) is then defined over \(x, y \in \alpha \cup \beta \) if there exist transitions \(t_1, t_2\) such that \(t_1 \preceq _{\{ \! \! \{ N \} \! \! \} } x\), \(t_2 \preceq _{\{ \! \! \{ N \} \! \! \} } y\), and \(t_1 \# _{0\{ \! \! \{ N \} \! \! \} } t_2\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:bwd-conflict">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8</span>
+    <span class="definition_thmtitle">Backward conflict</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p> A place \(s\) has a <em>backward conflict</em> if it is produced by two distinct transitions: \(\exists t_1, t_2, (t_1 \neq t_2) \wedge (s \in t_1^\bullet ) \wedge (s\in t_2^\bullet )\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:occ-net">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9</span>
+    <span class="definition_thmtitle">Occurrence net</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p> is_occurrence, OccurrenceNet.is_marked_occurrence A marked net \((N,m_0)\) is an <i class="itshape">occurrence net</i> if it satisfies the following statements: </p>
+<ul class="itemize">
+  <li><p>\(N\) is acyclic; </p>
+</li>
+  <li><p>there is no self-conflict, i.e., \(\neg ({\sf t}\# _{\{ \! \! \{ N \} \! \! \} }{\sf t})\) for all transition \({\sf t}\); </p>
+</li>
+  <li><p>there is no backward conflict; </p>
+</li>
+  <li><p>\(N\) is 1-safe, i.e., marking is a set; </p>
+</li>
+  <li><p>the initial marking is the set of initial places, i.e., \(m_0\) is minimal. </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:concurrent">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10</span>
+    <span class="definition_thmtitle">Concurrent</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p> OccurrenceNet.concurrent Two distinct elements \(x, y \in \alpha \cup \beta \) are <em>concurrent</em>, denoted \(x \mathrel {co}_{\{ \! \! \{ N \} \! \! \} }y\), if they they are neither causally dependent (\(x \not\preceq _{\{ \! \! \{ N\} \! \! \} }y\) and \(y \not\preceq _{\{ \! \! \{ N\} \! \! \} }x\)) nor in conflict (\(\neg (x \  \# _{\{ \! \! \{ N\} \! \! \} }y)\)). </p>
+<p>A multiset \(X\) consists of <em>concurrent places</em> if it has no duplicates and every pair of distinct places is concurrent. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:firing_sequence_preserves_concurrent">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">11</span>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> firing_sequence_preserves_concurrent Let \(N\) an occurrence net. If \(m\) is a concurrent place and \(m\llbracket t\rangle _{\{ \! \! \{ N \} \! \! \} }m'\), then \(m'\) is a concurrent place. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:occ_net_safe">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">12</span>
+    <span class="theorem_thmtitle">Occurrence net is safe</span>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> occ_net_safe lem:firing_sequence_preserves_concurrent If a marked net \((N,m_0)\) is occurrence, then is 1-safe. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <a href="sect0002.html" title="Nets"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Reversible Occurrence Nets"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="chap-reversible.html" title="Reversible occurrence nets"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+</body>
+</html>

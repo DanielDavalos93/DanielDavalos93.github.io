@@ -10,7 +10,7 @@
 % It is otherwise a very minimal preamble (you should probably at least
 % add cleveref and tikz-cd).
 
-\documentclass{amsbook}
+\documentclass[a4paper]{report}
 
 \usepackage{geometry}
 
@@ -18,22 +18,18 @@
 
 \usepackage{amssymb, amsthm, mathtools}
 \usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=magenta, citecolor=blue]{hyperref}
-
+\usepackage{stmaryrd}
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-
+\usepackage[thms=dfn+lem+prop+thm+cor]{blueprint}
+% \usepackage{graphics,tikz,subcaption}
 \input{macros/common}
 \input{macros/print}
 
-\title{A Lean Mechanization of Reversible Occurrence Nets}
+\title{Reversible Occurrence Nets}
 \author{Hernán Melgratti \and Daniel Dávalos}
 
 \begin{document}
 \maketitle
 \tableofcontents
-
 \input{content}
-
-\bibliographystyle{alpha}
-\bibliography{biblio}
-
 \end{document}

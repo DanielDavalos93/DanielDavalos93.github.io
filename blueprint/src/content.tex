@@ -6,12 +6,17 @@
 % the current file can be a simple sequence of \input. Otherwise It
 % can start with a \section or \chapter for instance.
 
+\chapter*{Introduction}
+
+This file provide a brief definitions and properties used in the Lean formalization of Reversible Occurrence nets repository (\url{github.com/DanielDavalos93/reversible-occ-nets}).
+
 \chapter{Nets}
 
-\begin{definition}[Net and Marked Net]\label{def:net}
-  \lean{net}
-  \leanok
-  \uses{def:net}
+\section{Net and Marked net definitions}
+
+\begin{definition}[Net and Marked Net]
+  \label{def:net}
+  \lean{Net, MarkedNet}
   A \emph{net} $N$ is a tuple $N = (\alpha, \beta, \preS{\_}, \postS{\_})$,
   where $\alpha$ is a nonempty set of places, $\beta$ is the set of
   transitions, and
@@ -27,13 +32,152 @@
   a marking of $N$.
 \end{definition}
 
-The pre- and postsets of a place $p$ are $\preS{p} = \{t \mid p \in \postS{t}\}$ and $\postS{p} = \{t \mid p \in \preS{t}\}$.
+\begin{definition}[Minimal]
+  \label{def:minimal}
+  \lean{minimal}
+The \emph{minimal} elements of a net are those with an empty preset; as all transitions are consuming, these are necessarily places.
+\end{definition}
 
-\subsection{Operational semantics}
-
-\begin{definition}[Enabled transition]\label{def:enabled}
+\begin{definition}[Enabled transition]
+  \label{def:enabled}
+  \lean{is_enabled}
   Let $N$ be a net. A transition $\tr{t}$ is \emph{enabled} at a marking $m$,
   denoted $m\llbracket \tr{t}\rrbracket_{\llBra N \rrBra}$, if $\preS{\tr{t}}\le m$.
 \end{definition}
 
-A transition is \emph{enabled} if the  marking contains its preset, i.e, as many tokens as those required by the transition's preset.
+\section{Firing and firing sequences}
+
+\begin{definition}[Firing and firing sequence]
+  \label{def:firing}\label{def:fs, float=!t}
+  \lean{firing}\lean{firing_sequence}
+ The \emph{firing} of a transition $t$ enabled at $m$ is denoted $m \fir{t}_{\llBra N \rrBra} m'$, where $m' = m - \preS{t} + \postS{t}$. For a (possibly empty) sequence $s = t_1; \dots; t_n$, the \emph{firing sequence} $m \fs{s}_{\llBra N \rrBra} m'$ is defined by the chain:
+ \[    m \fir{\tr{t_1}}_{\llBra N \rrBra} m_1 \,\wedge\, m_1 \fir{\tr{t_2}}_{\llBra N \rrBra} m_2  \,\wedge\, \cdots  \,\wedge\, m_{n-1} \fir{\tr{t_n}}_{\llBra N \rrBra} m'
+ \]
+\end{definition}
+
+
+\begin{definition}[Reachable markings and safe nets]
+  \lean{reachable}\lean{safe}
+The set of \emph{reachable markings} of a net $N$ starting from $m_0$, denoted by ${\it reach}(N,m_0)$, is the set of all markings obtainable through some firing sequence, i.e.,
+$ \{m' \mid \exists s, \; m_0 \ \fs{s}_{\llBra N\rrBra} \ m' \}.$
+A marked net is \emph{1-safe} (or simply, safe) if every reachable marking is a set, i.e., $m \in {\it reach}(N, m_0)$ implies $m \in 2^{\alpha}$.
+\end{definition}
+
+\chapter{Occurrence nets}
+
+\begin{definition}[Causal Dependency]
+  \label{def:immediate_dependency}
+  \lean{immediate, causal}
+Let $N$ be a net. The \emph{immediate dependency relation}
+$<_{\llBra N \rrBra}\subseteq{(\places\cup\transitions)\times(\places\cup\transitions)}$
+is  defined by
+  \begin{equation}\label{eq:immediate_dependency}
+  <_{\llBra N \rrBra} \; := \; \{ (x,y) \mid
+  (y\in \transitions \wedge x\in\preS{y}) \vee
+  (x\in \transitions \wedge y \in \postS{x})\}
+\end{equation}
+We denote the transitive closure of  $<_{\llBra N \rrBra}$ as the \emph{causal relation} $\prec_{\llBra N \rrBra}$, and its reflexive-transitive closure as the \emph{causal preorder} $\preceq_{\llBra N \rrBra}$. A net is \emph{acyclic} if its causal relation is irreflexive, i.e., there is no $x \in \places \cup \transitions$ such that $x \prec_{\llBra N \rrBra} x$.
+\end{definition}
+
+\begin{definition}[Conflict]
+  \label{def:conflict}
+  \lean{immediate_conflict, Conflict.conflict}
+Two distinct transitions $t_1, t_2$ are in \emph{immediate conflict} if they share a common pre-place, i.e., $\preS{t_1} \cap \preS{t_2} \neq \emptyset$, denoted by $t_1 \#_{0\llBra N \rrBra} t_2$. The \emph{conflict relation} $\#_{\llBra N \rrBra}$ is then defined over $x, y \in \places \cup \transitions$ if there exist transitions $t_1, t_2$ such that $t_1 \preceq_{\llBra N \rrBra} x$, $t_2 \preceq_{\llBra N \rrBra} y$, and $t_1 \#_{0\llBra N \rrBra} t_2$.
+\end{definition}
+
+\begin{definition}[Backward conflict]\label{def:bwd-conflict}
+A place $s$ has a \emph{backward conflict} if it is produced by two distinct transitions: $\exists t_1, t_2, (t_1 \neq t_2) \wedge (s \in t_1^\bullet ) \wedge  (s\in t_2^\bullet)$.
+\end{definition}
+
+\begin{definition}[Occurrence net]\label{def:occ-net}
+  \lean{is_occurrence, OccurrenceNet.is_marked_occurrence}
+A marked net $(N,m_0)$ is an \textit{occurrence net} if it satisfies the
+following statements:
+\begin{itemize}
+  \item $N$ is acyclic;
+  \item there is no self-conflict, \ie, $\neg(\tr{t}\#_{\llBra N \rrBra}\tr{t})$
+    for all transition $\tr{t}$;
+  \item there is no backward conflict;
+  \item $N$ is 1-safe, \ie, marking is a set;
+  \item the initial marking is the set of initial places, \ie, $m_0$ is minimal.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Concurrent]\label{def:concurrent}
+  \lean{OccurrenceNet.concurrent}
+  Two distinct elements $x, y \in \places \cup \transitions$ are
+\emph{concurrent}, denoted  $x \mathrel{co}_{\llBra N \rrBra}y$, if they
+they are neither causally dependent ($x \not\preceq_{\llBra N\rrBra}y$ and
+$y \not\preceq_{\llBra N\rrBra}x$) nor in conflict
+($\neg(x \ \#_{\llBra N\rrBra}y)$).
+
+A multiset $X$ consists of \emph{concurrent places} if it has no duplicates
+ and every pair of distinct places is
+ concurrent.
+\end{definition}
+
+\begin{lemma}\label{lem:firing_sequence_preserves_concurrent}
+  \lean{firing_sequence_preserves_concurrent}
+  \leanok
+  Let $N$ an occurrence net. If $m$ is a concurrent place and $m\llbracket t\rangle_{\llBra N \rrBra}m'$, then $m'$ is a concurrent place.
+\end{lemma}
+
+\begin{theorem}[Occurrence net is safe]\label{thm:occ_net_safe}
+  \lean{occ_net_safe}
+  \leanok
+  \uses{lem:firing_sequence_preserves_concurrent}
+  If a marked net $(N,m_0)$ is occurrence, then is 1-safe.
+
+\end{theorem}
+
+\chapter{Reversible occurrence nets}\label{chap:reversible}
+
+\section{Definitions of reversible nets}
+
+\begin{definition}[Reversible occurrence net]\label{def:rev-net}
+  A \emph{reversible occurrence net} is a net
+  \(
+    N=(\places, \transitions \uplus \{\leadstoop{t}\mid t\in\transitions\},
+    \preS{\_},\postS{\_})
+  \)
+  defined by the following conditions:
+  \begin{enumerate}
+  \item    $(\places,\transitions, (\preS{\_})_{|\transitions},
+    (\postS{\_})_{|\transitions})$ is an occurrence net, where
+    $f_{|\transitions}$ denotes the restriction of the function $f$ to the
+    domain $\transitions$.
+  \item For every $t \in \transitions$, $\preS t = \postS{(\leadstoop{t})}$
+    and $\postS{t} = \preS{(\leadstoop{t})}$.
+  \end{enumerate}
+\end{definition}
+
+\section{Properties of reversible occurrence nets}
+
+\begin{lemma}\label{lem:forward_disjoint_postset}
+  \lean{forward_disjoint_postset}
+  \leanok
+  Let $R$ a reversible occurrence net, $\fw{t}$ and $\fw{t'}$ forward transitions, and $t \neq t'$. Then,
+    $(t \llbBra R\rrBra) \cap (t'\llbBra R\rrBra) = \emptyset$.
+\end{lemma}
+
+% lemma backward_disjoint_preset (R : ReversibleOccurrence &$\alpha$& &$\beta$&)
+%     (bt : &$\bw{}$&t) (bt : &$\bw{}$&t') (_ : t &$\neq$& t') :
+%     Disjoint (&$\llbBra$&R.toNet&$\rrBra$& t) (&$\llbBra$&R.toNet&$\rrBra$& t')
+%
+% lemma neq_fwd_disjoint_bwd_preset (R : ReversibleOccurrence &$\alpha$& &$\beta$&)
+%     (ft : &$\fw{}$&t) (ft' : &$\fw{}$&t') (_ : t &$\neq$& t') :
+%     Disjoint (&$\llbBra$&R.toNet&$\rrBra \ \reverse{}$&t) (&$\llbBra$&R.toNet&$\rrBra \ \reverse{}$&t')
+
+
+\chapter{Parabolic}\label{chap:parabolic}
+
+\begin{lemma}[Parabolic lemma]
+  \label{lemma:parabolic}
+  \lean{parabolic}
+  \leanok
+  Let $R$ be a reversible occurrence net, and $m \llbracket {\omega} \rangle_{\llBra R\rrBra} m'$ a
+  firing sequence. Then there exist two sequences of transitions, $\omega'$ and
+  $\omega''$, such that $\omega'$ consists only of backward transitions, $\omega''$
+  consists only of forward transitions, $\omega \ceq_{\llBra R \rrBra} \omega'; \omega''$,
+  and $m \llbracket{\omega'; \omega''}\rangle_{\llBra R \rrBra} m'$.
+\end{lemma}

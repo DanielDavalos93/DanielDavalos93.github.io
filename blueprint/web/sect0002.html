@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nets</title>
+<link rel="next" href="sect0003.html" title="Occurrence nets" />
+<link rel="prev" href="sect0001.html" title="Introduction" />
+<link rel="up" href="index.html" title="Reversible Occurrence Nets" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Reversible Occurrence Nets</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref"></span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">Nets</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0002.html#a0000000005"><span class="toc_ref">1.1</span> <span class="toc_entry">Net and Marked net definitions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000006"><span class="toc_ref">1.2</span> <span class="toc_entry">Firing and firing sequences</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">2</span> <span class="toc_entry">Occurrence nets</span></a>
+ </li>
+<li class="">
+  <a href="chap-reversible.html"><span class="toc_ref">3</span> <span class="toc_entry">Reversible occurrence nets</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="chap-reversible.html#a0000000007"><span class="toc_ref">3.1</span> <span class="toc_entry">Definitions of reversible nets</span></a>
+ </li>
+<li class="">
+  <a href="chap-reversible.html#a0000000008"><span class="toc_ref">3.2</span> <span class="toc_entry">Properties of reversible occurrence nets</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-parabolic.html"><span class="toc_ref">4</span> <span class="toc_entry">Parabolic</span></a>
+ </li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000003">1 Nets</h1>
+<h1 id="a0000000005">1.1 Net and Marked net definitions</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:net">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">1</span>
+    <span class="definition_thmtitle">Net and Marked Net</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Net, MarkedNet A <em>net</em> \(N\) is a tuple \(N = (\alpha , \beta , {}^\bullet {\_ }, \_ ^\bullet )\), where \(\alpha \) is a nonempty set of places, \(\beta \) is the set of transitions, and \({}^\bullet {\_ }, \_ ^\bullet : \beta \rightarrow \mathbb {N}^{\alpha }\) assign source and target to each transition. We consider only nets in which every transition both consumes and produces, i.e., \({}^\bullet {{\sf t}} \neq \emptyset \) and \({\sf t}^\bullet  \neq \emptyset \) for all \({\sf t}\in \beta \). A <em>marking</em> \(m\) of a net \(N\) is a multiset of places, i.e., \(m\in \mathbb {N}^{\alpha }\). A <em>marked net</em> is a pair \((N, m_0)\) where \(N\) is a net and \(m_0\) is a marking of \(N\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:minimal">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">2</span>
+    <span class="definition_thmtitle">Minimal</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  minimal The <em>minimal</em> elements of a net are those with an empty preset; as all transitions are consuming, these are necessarily places. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:enabled">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3</span>
+    <span class="definition_thmtitle">Enabled transition</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  is_enabled Let \(N\) be a net. A transition \({\sf t}\) is <em>enabled</em> at a marking \(m\), denoted \(m\llbracket {\sf t}\rrbracket _{\{ \! \! \{ N \} \! \! \} }\), if \({}^\bullet {{\sf t}}\le m\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000006">1.2 Firing and firing sequences</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:fs, float=!t">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">4</span>
+    <span class="definition_thmtitle">Firing and firing sequence</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  firingfiring_sequence The <em>firing</em> of a transition \(t\) enabled at \(m\) is denoted \(m \llbracket t \rangle _{\{ \! \! \{ N \} \! \! \} } m'\), where \(m' = m - {}^\bullet {t} + t^\bullet \). For a (possibly empty) sequence \(s = t_1; \dots ; t_n\), the <em>firing sequence</em> \(m \llbracket s \rrangle _{\{ \! \! \{ N \} \! \! \} } m'\) is defined by the chain: </p>
+<div class="displaymath" id="a0000000009">
+  \[  m \llbracket {\sf t_1} \rangle _{\{ \! \! \{ N \} \! \! \} } m_1 \, \wedge \,  m_1 \llbracket {\sf t_2} \rangle _{\{ \! \! \{ N \} \! \! \} } m_2 \, \wedge \,  \cdots \, \wedge \,  m_{n-1} \llbracket {\sf t_n} \rangle _{\{ \! \! \{ N \} \! \! \} } m'  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000010">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5</span>
+    <span class="definition_thmtitle">Reachable markings and safe nets</span>
+  </div>
+  <div class="definition_thmcontent">
+  <p> reachablesafe The set of <em>reachable markings</em> of a net \(N\) starting from \(m_0\), denoted by \({\it reach}(N,m_0)\), is the set of all markings obtainable through some firing sequence, i.e., \( \{ m' \mid \exists s, \;  m_0 \  \llbracket s \rrangle _{\{ \! \! \{ N\} \! \! \} } \  m' \} .\) A marked net is <em>1-safe</em> (or simply, safe) if every reachable marking is a set, i.e., \(m \in {\it reach}(N, m_0)\) implies \(m \in 2^{\alpha }\). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Reversible Occurrence Nets"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0003.html" title="Occurrence nets"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+</body>
+</html>

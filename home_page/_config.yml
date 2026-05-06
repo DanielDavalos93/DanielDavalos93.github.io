@@ -18,9 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: A Lean Mechanization of Reversible Occurrence Nets
+title: Reversible Occurrence Nets
 #email: your-email@example.com
-description: by Dávalos and Melgratti
+description: by Hernán Melgratti and Daniel Dávalos
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://DanielDavalos93.github.io/reversible-occ-nets" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
